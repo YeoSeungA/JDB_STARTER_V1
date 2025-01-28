@@ -3,25 +3,27 @@ package com.springboot.coffee.dto;
 import lombok.Getter;
 
 import javax.persistence.Column;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 @Getter
 public class CoffeePostDto {
-    @Column(nullable = false)
+    @NotBlank
     private String korName;
 
-    @Column(nullable = false)
+    @NotBlank
+    @Pattern(regexp = "^[A-Za-z]+([A-Za-z]+)*$")
     private String engName;
 
-    @Column(nullable = false)
+    @NotBlank
     private int price;
 
-    @Column(nullable = false, unique = true, length = 3)
+    @NotBlank
+    @Pattern(regexp = "^([A-Za-z]){3}$")
     private String coffeeCode;
 
-    @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(nullable = false)
     private LocalDateTime modifedAt = LocalDateTime.now();
 }

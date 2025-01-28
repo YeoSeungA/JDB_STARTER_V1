@@ -3,9 +3,11 @@ package com.springboot.order.entity;
 import com.springboot.coffee.entity.Coffee;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Setter
 @Getter
 @NoArgsConstructor
 @Entity

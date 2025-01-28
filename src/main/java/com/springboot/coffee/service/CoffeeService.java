@@ -65,7 +65,7 @@ public class CoffeeService {
 
 
 //    겹치는 커피코드가 있는가.
-    public void verifiedCoffeeCode(String coffeeCode) {
+    private void verifiedCoffeeCode(String coffeeCode) {
         Optional<Coffee> coffee = coffeeRepository.findByCoffeeCode(coffeeCode);
         if(coffee.isPresent())
             throw new BusinessLogicException(ExcepionCode.COFFEE_CODE_EXIST);
