@@ -15,7 +15,7 @@ public class OrderPostDto {
 
 //    @Valid
     @NotNull
-    private List<OrderCoffeeDto> orderCoffee;
+    private List<OrderCoffeeDto> orderCoffees;
 
 //   memberId만 알아도 Member 객체를 생성할 수 있다.
     public Member getMember(/*long memberId가 없어도 되나용?>*/) {

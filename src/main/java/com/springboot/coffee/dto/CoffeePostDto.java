@@ -1,6 +1,8 @@
 package com.springboot.coffee.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
@@ -16,7 +18,7 @@ public class CoffeePostDto {
     @Pattern(regexp = "^[A-Za-z]+([A-Za-z]+)*$")
     private String engName;
 
-    @NotBlank
+    @Range(min=1500, max=50000)
     private int price;
 
     @NotBlank

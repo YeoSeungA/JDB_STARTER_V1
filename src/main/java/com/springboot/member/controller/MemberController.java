@@ -31,7 +31,7 @@ public class MemberController {
     public ResponseEntity postMember(@Valid @RequestBody MemberPostDto memberPostDto) {
        Member member = memberService.createdMember(memberMapper.memberPostDtoToMember(memberPostDto));
        MemberResponseDto response = memberMapper.memberToMemberResponseDto(member);
-       return new ResponseEntity(response, HttpStatus.OK);
+       return new ResponseEntity(response, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{member-id}")

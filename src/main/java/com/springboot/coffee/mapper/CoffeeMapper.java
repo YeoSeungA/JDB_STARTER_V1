@@ -5,6 +5,7 @@ import com.springboot.coffee.dto.CoffeePostDto;
 import com.springboot.coffee.dto.CoffeeResponseDto;
 import com.springboot.coffee.entity.Coffee;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 

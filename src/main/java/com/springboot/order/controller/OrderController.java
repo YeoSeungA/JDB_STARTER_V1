@@ -32,7 +32,7 @@ public class OrderController {
         Order order = orderService.createdOrder(orderMapper.orderPostDtoToOrder(orderPostDto));
         OrderResponseDto response = orderMapper.orderToOrderResponseDto(order);
 
-        return new ResponseEntity(response, HttpStatus.OK);
+        return new ResponseEntity(response, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{order-id}")
@@ -56,7 +56,7 @@ public class OrderController {
     @GetMapping
     public ResponseEntity getOrders() {
         List<Order> orders = orderService.findOrders();
-        List<OrderResponseDto> responses = orderMapper.orderToOrderResponseDtos(orders);
+        List<OrderResponseDto> responses = orderMapper.ordersToOrderResponseDtos(orders);
 
         return new ResponseEntity(responses, HttpStatus.OK);
     }

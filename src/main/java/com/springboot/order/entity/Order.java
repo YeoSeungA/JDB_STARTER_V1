@@ -30,7 +30,7 @@ public class Order {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToMany(mappedBy = "ORDER")
+    @OneToMany(mappedBy = "order")
     private List<OrderCoffee> orderCoffees = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)

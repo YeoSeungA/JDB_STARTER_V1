@@ -8,6 +8,7 @@ import com.springboot.coffee.mapper.CoffeeMapper;
 import com.springboot.coffee.service.CoffeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v11/coffees")
-@Valid
+@Validated
 public class CoffeeController {
     private final CoffeeService coffeeService;
     private final CoffeeMapper coffeeMapper;
@@ -37,7 +38,7 @@ public class CoffeeController {
 //        받아온 결과를 Entity 에서 Dto 형태로 바꿔야 한다.
         CoffeeResponseDto response = coffeeMapper.coffeeToCoffeeResponseDto(coffee);
 //        ResponseEntity로 반환
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity(response, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{coffee-id}")
@@ -53,7 +54,7 @@ public class CoffeeController {
     }
 
     @GetMapping("/{coffee-id}")
-    public ResponseEntity getCoffee(@Positive @PathVariable long coffeeId) {
+    public ResponseEntity getCoffee(@Positive @PathVariable("coffee-id") long coffeeId) {
         Coffee coffee = coffeeService.findCoffee(coffeeId);
         CoffeeResponseDto response = coffeeMapper.coffeeToCoffeeResponseDto(coffee);
 
@@ -69,7 +70,7 @@ public class CoffeeController {
     }
 
     @DeleteMapping("/{coffee-id}")
-    public ResponseEntity deleteCoffee(@Positive @PathVariable long coffeeId) {
+    public ResponseEntity deleteCoffee(@Positive @PathVariable("coffee-id") long coffeeId) {
         coffeeService.deleteCoffee(coffeeId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -33,4 +33,11 @@ public class OrderCoffee {
             order.addOrderCoffee(this);
         }
     }
+
+//    public void addCoffee(Coffee coffee) {
+//        this.coffee = coffee;
+//        if(this.coffee.getOrderCoffees().contains(this)) {
+//            this.coffee.addOrderCoffee(this);
+//        }
+//    }
 }

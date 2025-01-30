@@ -1,11 +1,14 @@
 package com.springboot.coffee.entity;
 
+import com.springboot.order.entity.OrderCoffee;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,10 +26,14 @@ public class Coffee {
     private String engName;
 
     @Column(nullable = false)
-    private int price;
+//    왜 Intetger일까?
+    private Integer price;
 
     @Column(nullable = false, unique = true, length = 3)
     private String coffeeCode;
+
+    @OneToMany(mappedBy = "coffee")
+    private List<OrderCoffee> orderCoffees = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
@@ -36,7 +43,7 @@ public class Coffee {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(nullable = false)
-    private LocalDateTime modifedAt = LocalDateTime.now();
+    private LocalDateTime modifiedAt = LocalDateTime.now();
 
     public enum CoffeeStatus {
         COFFEE_FOR_SALE ("판매중"),
@@ -49,4 +56,11 @@ public class Coffee {
             this.status = status;
         }
     }
+
+//    public void addOrderCoffee(OrderCoffee orderCoffee) {
+//        orderCoffees.add(orderCoffee);
+//        if(orderCoffee.getCoffee() != this) {
+//            orderCoffee.addCoffee(this);
+//        }
+//    }
 }
